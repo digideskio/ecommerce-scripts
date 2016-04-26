@@ -1,3 +1,9 @@
+"""
+This script is deprecated, but can be used as a reference for MailChimp and SailThru API interaction.
+-Brian Fohl, 4/26/2016
+"""
+
+
 import json
 import requests
 from sailthru.sailthru_client import SailthruClient

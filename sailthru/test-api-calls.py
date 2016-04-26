@@ -1,3 +1,8 @@
+"""
+This script is deprecated, but can be used as a reference for SailThru API interaction.
+-Brian Fohl, 4/26/2016
+"""
+
 from sailthru.sailthru_client import SailthruClient
 from sailthru.sailthru_response import SailthruResponseError
 from sailthru.sailthru_error import SailthruClientError
