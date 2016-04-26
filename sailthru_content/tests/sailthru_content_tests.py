@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 
-import datetime, json
 import sailthru_content
 
 # test datetime converter
@@ -32,6 +31,10 @@ def test_create_sailthru_content():
     converted_enrollment_end_date = "2017-12-14 05:00:00 +0000"
     enrollment_start_date = "2017-11-14T05:00:00Z"
     converted_enrollment_start_date = "2017-11-14 05:00:00 +0000"
+    course_start_date = "2017-11-14T05:00:00Z"
+    converted_course_start_date = "2017-11-14 05:00:00 +0000"
+    course_end_date = "2017-11-24T05:00:00Z"
+    converted_course_end_date = "2017-11-24 05:00:00 +0000"
     image_url = "https://image.location.edx.org/image"
     series_id = '22'
     series_index = 11
@@ -48,7 +51,7 @@ def test_create_sailthru_content():
     upgrade_deadline = "2016-04-22T17:34:34.360311Z"
     converted_upgrade_deadline = "2016-04-22 17:34:34 +0000"
 
-    series_table = { course_run_id : { 'series' : series_id, 'index' : series_index }}
+    series_table = {course_run_id: {'series': series_id, 'index': series_index}}
 
     course_run = {
                     "course": course_id,
@@ -56,8 +59,8 @@ def test_create_sailthru_content():
                     "title": title,
                     "short_description": description,
                     "full_description": None,
-                    "start": "2014-01-13T13:00:00Z",
-                    "end": "2014-04-14T12:00:00Z",
+                    "start": course_start_date,
+                    "end": course_end_date,
                     "enrollment_start": enrollment_start_date,
                     "enrollment_end": enrollment_end_date,
                     "announcement": None,
@@ -189,6 +192,8 @@ def test_create_sailthru_content():
     assert response['expire_date'] == converted_enrollment_end_date
     assert response['vars']['enrollment_start'] == converted_enrollment_start_date
     assert response['vars']['enrollment_end'] == converted_enrollment_end_date
+    assert response['vars']['course_start'] == converted_course_start_date
+    assert response['vars']['course_end'] == converted_course_end_date
     assert response['images']['thumb']['url'] == image_url
     assert response['vars']['series_id'] == series_id
     assert response['vars']['series_index'] == series_index
